@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders | Distribution System</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Syne:wght@700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/orders.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">Distribution System</div>
+    <div class="nav-links">
+      <a href="dashboard.html">Home</a>
+      <a href="vendors.html">Vendors</a>
+      <a href="products.html">Products</a>
+      <a href="orders.html" class="active">My Orders</a>
+    </div>
+    <div class="nav-user">
+      <span class="user-dot"></span>
+      <span id="nav-username">User</span>
+      <button id="logout-btn" class="btn btn-outline" style="padding: 4px 12px; margin-left: 8px;">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page" style="padding: 48px; max-width: 900px; margin: 0 auto;">
+    <div class="page-title" style="font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 900;">My Orders</div>
+    <div class="page-sub" style="color: var(--text-muted); margin-bottom: 36px;">Track all your orders and their status
+    </div>
+    <div id="orders-container" class="orders-container">
+      <div class="loading">Loading your orders...</div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-brand">Distribution System</div>
+    <div>© 2026 Distribution System. All rights reserved.</div>
+    <div>info@distributionsystem.com | +254 700 000 000</div>
+  </footer>
+
+  <script src="js/orders.js"></script>
+</body>
+
+</html>

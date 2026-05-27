@@ -1,0 +1,8 @@
+.dist/
+Thumbs.db
+desktop.ini
+*.py
+__pycache__/
+video.mp4
+.env
+analysis.md

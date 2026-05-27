@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | Distribution System</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Syne:wght@700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/products.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">Distribution System</div>
+    <div class="nav-links">
+      <a href="dashboard.html">Home</a>
+      <a href="vendors.html">Vendors</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="orders.html">My Orders</a>
+    </div>
+    <div class="nav-user">
+      <span class="user-dot"></span>
+      <span id="nav-username">User</span>
+      <button id="logout-btn" class="btn btn-outline" style="padding: 4px 12px; margin-left: 8px;">Logout</button>
+    </div>
+  </nav>
+
+  <div id="top"></div>
+
+  <div class="page-header">
+    <div class="header-content">
+      <div class="page-badge">Live Pricing</div>
+      <h1>Product Price List</h1>
+      <p>Browse all available products and current prices from our distribution network</p>
+      <div class="controls-group">
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" placeholder="Search products..." oninput="filterProducts()">
+        </div>
+        <div class="view-toggle">
+          <button class="view-btn active" id="btn-table" onclick="setView('table')">Table</button>
+          <button class="view-btn" id="btn-cards" onclick="setView('cards')">Cards</button>
+        </div>
+        <button class="download-btn" onclick="downloadProductList()">⬇ Download List</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-pill">
+      <div>
+        <div class="val" id="stat-count">—</div>
+        <div class="lbl">Total Products</div>
+      </div>
+    </div>
+    <div class="stat-pill">
+      <div>
+        <div class="val" id="stat-min">—</div>
+        <div class="lbl">Lowest Price</div>
+      </div>
+    </div>
+    <div class="stat-pill">
+      <div>
+        <div class="val" id="stat-max">—</div>
+        <div class="lbl">Highest Price</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-btns">
+    <a href="#bottom" class="scroll-btn">Jump to Bottom ↓</a>
+  </div>
+
+  <div class="main-content">
+    <div class="state-msg" id="state-msg">
+      <div class="icon">📦</div>
+      <p>Loading products...</p>
+    </div>
+
+    <div class="table-wrap" id="table-view" style="display: none;">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Price (Ksh)</th>
+          </tr>
+        </thead>
+        <tbody id="price-table-body"></tbody>
+      </table>
+    </div>
+
+    <div class="card-grid" id="card-view" style="display: none;"></div>
+  </div>
+
+  <div class="media-section">
+    <div class="media-title">Product Gallery</div>
+    <div class="media-grid">
+      <div class="media-card">
+        <img src="assets/images/trolley.jpg" alt="Shopping trolley" onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="media-card">
+        <video controls style="width: 100%; border-radius: 18px;">
+          <source src="assets/videos/product-demo.mp4">
+          Your browser does not support video.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-btns" id="bottom">
+    <a href="#top" class="scroll-btn">Back to Top ↑</a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-brand">Distribution System</div>
+    <div>© 2026 Distribution System. All rights reserved.</div>
+    <div>info@distributionsystem.com | +254 700 000 000</div>
+  </footer>
+
+  <script src="js/products.js"></script>
+</body>
+
+</html>

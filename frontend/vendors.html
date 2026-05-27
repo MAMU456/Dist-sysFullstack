@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendors | Distribution System</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Syne:wght@700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/vendors.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">Distribution System</div>
+    <div class="nav-links">
+      <a href="dashboard.html">Home</a>
+      <a href="vendors.html" class="active">Vendors</a>
+      <a href="products.html">Products</a>
+      <a href="orders.html">My Orders</a>
+    </div>
+    <div class="nav-user">
+      <span class="user-dot"></span>
+      <span id="nav-username">User</span>
+      <button id="logout-btn" class="btn btn-outline" style="padding: 4px 12px; margin-left: 8px;">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <h1>Our Vendors</h1>
+    <p>Find and connect with trusted suppliers across Kenya</p>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-number" id="total-count">0</div>
+      <div class="stat-label">Total Vendors</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" id="open-count">0</div>
+      <div class="stat-label">Open Now</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">6</div>
+      <div class="stat-label">Cities Covered</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search vendors..." onkeyup="filterVendors()">
+    </div>
+    <div class="filter-btns">
+      <button class="filter-btn active" onclick="filterByStatus('all', this)">All</button>
+      <button class="filter-btn" onclick="filterByStatus('open', this)">Open Now</button>
+      <button class="filter-btn" onclick="filterByStatus('closed', this)">Closed</button>
+    </div>
+  </div>
+
+  <div class="vendors-section">
+    <div class="vendor-grid" id="vendor-grid"></div>
+    <div class="empty-state" id="empty-state" style="display: none;">
+      <div class="icon">🔍</div>
+      <p>No vendors match your search.</p>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-name"></h3>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-info" id="modal-info"></div>
+      <div class="modal-actions">
+        <button class="btn-select" id="modal-select-btn" onclick="selectVendorFromModal()">✓ Select Vendor</button>
+        <button class="btn-contact" onclick="contactVendorFromModal()">Call</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-brand">Distribution System</div>
+    <div>© 2026 Distribution System. All rights reserved.</div>
+    <div>info@distributionsystem.com | +254 700 000 000</div>
+  </footer>
+
+  <script src="js/vendors.js"></script>
+</body>
+
+</html>

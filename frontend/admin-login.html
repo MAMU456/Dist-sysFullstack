@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Distribution System</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Syne:wght@700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .admin-login-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      padding: 20px;
+    }
+
+    .admin-login-card {
+      width: 100%;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      animation: fadeUp 0.6s ease;
+    }
+
+    .admin-badge {
+      display: inline-block;
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--danger);
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .admin-login-card h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .admin-subtitle {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .error-message {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--danger);
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      text-align: center;
+      display: none;
+      margin-bottom: 20px;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--text-dark);
+    }
+
+    .back-link a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .back-link a:hover {
+      color: var(--text);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="admin-login-container">
+    <div class="admin-login-card">
+      <div class="admin-badge">🔐 ADMIN ACCESS</div>
+      <h2>Admin Portal</h2>
+      <p class="admin-subtitle">Restricted area. Authorized personnel only.</p>
+
+      <div class="error-message" id="error-message"></div>
+
+      <form id="admin-login-form">
+        <div class="form-group">
+          <label>Admin Username</label>
+          <input type="text" id="username" placeholder="Enter admin username" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="Enter password" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Access Admin Panel</button>
+      </form>
+
+      <div class="back-link">
+        <a href="index.html">← Back to site</a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { adminLogin } from './js/auth.js';
+
+    // Redirect if already logged in
+    if (localStorage.getItem('admin_token')) {
+      window.location.href = 'admin-panel.html';
+    }
+
+    document.getElementById('admin-login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const errorMsg = document.getElementById('error-message');
+
+      errorMsg.style.display = 'none';
+
+      if (!username || !password) {
+        errorMsg.textContent = 'Please fill all fields';
+        errorMsg.style.display = 'block';
+        return;
+      }
+
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Authenticating...';
+
+      const success = await adminLogin(username, password);
+
+      if (!success) {
+        errorMsg.textContent = 'Invalid admin credentials';
+        errorMsg.style.display = 'block';
+      }
+
+      btn.disabled = false;
+      btn.textContent = 'Access Admin Panel';
+    });
+  </script>
+</body>
+
+</html>

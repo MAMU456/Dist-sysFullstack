@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | Distribution System</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Syne:wght@700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/checkout.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">Distribution System</div>
+    <div class="nav-links">
+      <a href="dashboard.html">Home</a>
+      <a href="vendors.html">Vendors</a>
+      <a href="products.html">Products</a>
+      <a href="orders.html">My Orders</a>
+    </div>
+    <div class="nav-user">
+      <span class="user-dot"></span>
+      <span id="nav-username">User</span>
+      <button id="logout-btn" class="btn btn-outline" style="padding: 4px 12px; margin-left: 8px;">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page" style="padding: 48px; max-width: 1100px; margin: 0 auto;">
+    <div class="page-title" style="font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 900;">Checkout</div>
+    <div class="page-sub" style="color: var(--text-muted); margin-bottom: 36px;">Place your order through your selected
+      vendor</div>
+
+    <div class="vendor-banner">
+      <div class="vendor-avatar-lg" id="vendor-initials">--</div>
+      <div class="vendor-info">
+        <h3 id="vendor-name">Loading vendor...</h3>
+        <p id="vendor-detail">Please wait</p>
+      </div>
+    </div>
+
+    <div class="checkout-layout">
+      <div>
+        <div class="section-card">
+          <h3>Select Products</h3>
+          <div class="products-list" id="products-list">
+            <div class="loading">Loading products...</div>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <h3>Delivery Details</h3>
+          <div class="form-group">
+            <label>Delivery Address</label>
+            <input type="text" id="delivery-address" placeholder="e.g. 123 Kenyatta Ave, Nairobi">
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" id="phone" placeholder="e.g. +254 700 000 000">
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="summary-card">
+          <h3>Order Summary</h3>
+          <div class="summary-items" id="summary-items">
+            <div class="summary-empty">No items selected yet</div>
+          </div>
+          <div class="divider"></div>
+          <div class="total-row">
+            <div class="total-label">Total</div>
+            <div class="total-value" id="total-price">Ksh 0</div>
+          </div>
+          <button class="place-btn" id="place-btn" onclick="placeOrder()">Place Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Overlay -->
+  <div class="success-overlay" id="success-overlay">
+    <div class="success-card">
+      <div class="success-icon">✓</div>
+      <h2>Order Placed!</h2>
+      <p>Your order has been received and is being processed.</p>
+      <div class="success-id" id="success-order-id">Order #—</div>
+      <p style="font-size: 13px;">Your vendor will contact you shortly at the number provided.</p>
+      <div class="divider-line" style="height: 1px; background: var(--border); margin: 20px 0;"></div>
+      <div class="rating-section">
+        <p>How would you rate <strong id="rate-vendor-name">this vendor</strong>?</p>
+        <div class="stars-input" id="stars-input">
+          <button class="star-btn" onclick="setRating(1)">★</button>
+          <button class="star-btn" onclick="setRating(2)">★</button>
+          <button class="star-btn" onclick="setRating(3)">★</button>
+          <button class="star-btn" onclick="setRating(4)">★</button>
+          <button class="star-btn" onclick="setRating(5)">★</button>
+        </div>
+        <div class="rating-feedback" id="rating-feedback"></div>
+        <div class="rating-done" id="rating-done">✓ Rating submitted — thank you!</div>
+        <button class="btn-rate" id="rate-btn" onclick="submitRating()" disabled>Submit Rating</button>
+      </div>
+      <div class="divider-line"></div>
+      <div class="success-btns">
+        <button class="btn-green" onclick="window.location.href='orders.html'"
+          style="flex: 1; padding: 13px; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); color: white; border: none; border-radius: 12px; cursor: pointer;">View
+          My Orders</button>
+        <button class="btn-ghost" onclick="window.location.href='dashboard.html'"
+          style="flex: 1; padding: 13px; background: none; border: 1px solid var(--border); border-radius: 12px; color: var(--text-muted); cursor: pointer;">Back
+          Home</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/checkout.js"></script>
+</body>
+
+</html>

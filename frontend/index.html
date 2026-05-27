@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Distribution System</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Syne:wght@700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .landing-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-landing {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-landing::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(37, 99, 235, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.07) 1px, transparent 1px);
+      background-size: 48px 48px;
+      animation: gridMove 20s linear infinite;
+    }
+
+    .hero-landing h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-landing p {
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      max-width: 500px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-landing {
+      background: #080f1a;
+      text-align: center;
+      padding: 24px;
+      color: var(--text-dark);
+      font-size: 13px;
+    }
+
+    @keyframes gridMove {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(48px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-landing h1 {
+        font-size: 32px;
+      }
+
+      .btn-group {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn-group .btn {
+        width: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="landing-container">
+    <div class="hero-landing">
+      <h1>Welcome to <span class="text-accent">Distribution System</span></h1>
+      <p>Kenya's premier distribution network connecting businesses with trusted vendors</p>
+      <div class="btn-group">
+        <a href="login.html" class="btn btn-primary">Login</a>
+        <a href="register.html" class="btn btn-outline">Register</a>
+        <a href="admin-login.html" class="btn btn-outline">Admin Portal</a>
+      </div>
+    </div>
+    <footer class="footer-landing">
+      📧 info@distributionsystem.com | 📞 +254 700 000 000<br>
+      © 2026 Distribution System. All Rights Reserved.
+    </footer>
+  </div>
+</body>
+
+</html>l>

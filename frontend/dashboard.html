@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Distribution System</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Syne:wght@700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">Distribution System</div>
+    <div class="nav-links">
+      <a href="dashboard.html" class="active">Home</a>
+      <a href="vendors.html">Vendors</a>
+      <a href="products.html">Products</a>
+      <a href="orders.html">My Orders</a>
+    </div>
+    <div class="nav-user">
+      <span class="user-dot"></span>
+      <span id="nav-username">User</span>
+      <button id="logout-btn" class="btn btn-outline" style="padding: 4px 12px; margin-left: 8px;">Logout</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="user-dot"></span>
+        Kenya's Premier Distribution Network
+      </div>
+      <h1>Deliver Smarter,<br>Grow <span class="hero-highlight">Faster</span></h1>
+      <p>Connect with top vendors across Kenya, browse thousands of products, and manage your orders — all in one place.
+      </p>
+      <div class="hero-actions">
+        <a href="vendors.html" class="btn btn-primary">Browse Vendors</a>
+        <a href="products.html" class="btn btn-outline">View Products</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-label">Active Vendors</div>
+      <div class="stat-value green">6</div>
+      <div class="stat-sub">Across 6 cities</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Products Listed</div>
+      <div class="stat-value blue" id="stat-products">—</div>
+      <div class="stat-sub">Updated live</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Cities Covered</div>
+      <div class="stat-value">6</div>
+      <div class="stat-sub">Nairobi to Mombasa</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Delivery Services</div>
+      <div class="stat-value green">4</div>
+      <div class="stat-sub">Food, Gas & more</div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-title">Product Catalog</div>
+      <a href="products.html" class="section-link">View all products →</a>
+    </div>
+    <div class="product-grid" id="product-grid">
+      <div class="loading">Loading products...</div>
+    </div>
+  </section>
+
+  <div class="services-strip" style="padding: 0 48px 60px;">
+    <div class="section-header">
+      <div class="section-title">Our Services</div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🍔</div>
+        <div class="service-name">Food Delivery</div>
+        <div class="service-desc">Fresh meals delivered within the hour</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🥤</div>
+        <div class="service-name">Drink Delivery</div>
+        <div class="service-desc">Beverages delivered cold and fast</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔥</div>
+        <div class="service-name">Gas Delivery</div>
+        <div class="service-desc">Cooking gas cylinders refilled safely</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⭐</div>
+        <div class="service-name">Custom Orders</div>
+        <div class="service-desc">Tailored bulk orders for businesses</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-brand">Distribution System</div>
+    <div>© 2026 Distribution System. All rights reserved.</div>
+    <div>info@distributionsystem.com | +254 700 000 000</div>
+  </footer>
+
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+
+</html>
