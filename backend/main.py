@@ -1,8 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import sys
+
+print("[STARTUP] Starting application initialization...", file=sys.stderr)
 
 from config import settings
+print(f"[STARTUP] Config loaded. Environment: {settings.ENVIRONMENT}", file=sys.stderr)
+
 from database import init_db
+print("[STARTUP] Database module imported", file=sys.stderr)
+
 from routes import (
     auth_router,
     products_router,
@@ -11,6 +18,7 @@ from routes import (
     admin_router,
     ratings_router
 )
+print("[STARTUP] All routers imported", file=sys.stderr)
 
 # Create FastAPI app
 app = FastAPI(
@@ -33,8 +41,12 @@ app.add_middleware(
 # Initialize database
 @app.on_event("startup")
 async def startup_event():
-    init_db()
-    print("Database initialized successfully")
+    try:
+        init_db()
+        print("Database initialized successfully")
+    except Exception as e:
+        print(f"Warning: Database initialization failed: {e}")
+        print("Application will continue, but database may not be ready")
 
 # Include routers
 app.include_router(auth_router)

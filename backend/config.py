@@ -7,7 +7,7 @@ load_dotenv()
 class Settings:
     """Application configuration settings"""
     
-    # Database
+    # Database - Use environment variable if available, otherwise fallback to SQLite for development
     DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./distribution.db")
     
     # Security

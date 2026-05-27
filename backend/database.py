@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, event
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 from typing import Generator
@@ -11,7 +11,7 @@ DATABASE_URL = settings.DATABASE_URL
 if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
-# Create engine with appropriate settings
+# Create engine with appropriate settings and connection timeout
 if DATABASE_URL and DATABASE_URL.startswith("sqlite"):
     engine = create_engine(
         DATABASE_URL,
@@ -19,11 +19,17 @@ if DATABASE_URL and DATABASE_URL.startswith("sqlite"):
         echo=False
     )
 else:
+    # PostgreSQL connection with timeout
     engine = create_engine(
         DATABASE_URL,
         pool_pre_ping=True,
         pool_recycle=3600,
-        echo=False
+        echo=False,
+        connect_args={
+            "connect_timeout": 10,  # 10 second timeout
+            "keepalives": 1,
+            "keepalives_idle": 30
+        }
     )
 
 # Session factory
