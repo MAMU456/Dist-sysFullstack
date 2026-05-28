@@ -16,6 +16,9 @@ class Settings:
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 24 hours
     ADMIN_TOKEN_EXPIRE_MINUTES: int = 60 * 24   # 24 hours for admin
     
+    # Environment
+    ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development")
+
     # CORS
     ALLOWED_ORIGINS: list = [
         "http://localhost:5500",
