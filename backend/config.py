@@ -8,7 +8,8 @@ class Settings:
     """Application configuration settings"""
     
     # Database - Use environment variable if available, otherwise fallback to SQLite for development
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./distribution.db")
+    _DATABASE_URL: str = os.getenv("DATABASE_URL", "").strip()
+    DATABASE_URL: str = _DATABASE_URL or "sqlite:///./distribution.db"
     
     # Security
     SECRET_KEY: str = os.getenv("SECRET_KEY", "your-super-secret-key-change-this-in-production")

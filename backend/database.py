@@ -6,13 +6,17 @@ import os
 
 from config import settings
 
-# Fix for Render postgres:// URL
-DATABASE_URL = settings.DATABASE_URL
-if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
+# Fix for Render postgres:// URL and quoted/blank env values
+DATABASE_URL = settings.DATABASE_URL.strip()
+if DATABASE_URL.startswith(('"', "'")) and DATABASE_URL[0] == DATABASE_URL[-1]:
+    DATABASE_URL = DATABASE_URL[1:-1]
+if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 # Create engine with appropriate settings and connection timeout
-if DATABASE_URL and DATABASE_URL.startswith("sqlite"):
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL is empty; set a valid database connection string in environment variables")
+if DATABASE_URL.startswith("sqlite"):
     engine = create_engine(
         DATABASE_URL,
         connect_args={"check_same_thread": False},
