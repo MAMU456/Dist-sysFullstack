@@ -326,14 +326,14 @@ def get_all_orders(
 @router.patch("/orders/{order_id}/status")
 def update_order_status(
     order_id: int,
-    status: str,
+    new_status: str,
     db: Session = Depends(get_db),
     admin: Admin = Depends(get_current_admin)
 ):
     """Update order status (admin only)"""
     
     valid_statuses = ["pending", "confirmed", "delivered", "cancelled"]
-    if status not in valid_statuses:
+    if new_status not in valid_statuses:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"Invalid status. Must be one of: {', '.join(valid_statuses)}"
@@ -346,7 +346,7 @@ def update_order_status(
             detail="Order not found"
         )
     
-    order.status = status
+    order.status = new_status
     db.commit()
     
-    return {"message": f"Order #{order_id} status updated to '{status}'"}
+    return {"message": f"Order #{order_id} status updated to '{new_status}'"}

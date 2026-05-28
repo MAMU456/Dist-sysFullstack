@@ -2,10 +2,10 @@ services:
   - type: web
     name: distribution-system-api
     runtime: python
-    pythonVersion: 3.12.3
-    repo: https://github.com/YOUR_USERNAME/distribution-system
-    buildCommand: cd backend && pip install -r requirements.txt
-    startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
+    rootDir: backend
+    repo: https://github.com/MAMU456/Dist-sysFullstack.git
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: ENVIRONMENT
         value: production
@@ -15,6 +15,8 @@ services:
         fromDatabase:
           name: distribution-db
           property: connectionString
+      - key: PYTHON_VERSION
+        value: "3.11.0"
 
   - type: postgresql
     name: distribution-db

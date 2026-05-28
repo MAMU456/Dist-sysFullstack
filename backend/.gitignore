@@ -3,3 +3,7 @@ __pycache__/
 node_modules/
 .env
 *.db
+desktop.ini
+package-lock.json
+package.json
+rantime.txt
